@@ -5,17 +5,23 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{FB505D35-160C-48FD-91EE-08B76CC19053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tcs.Common.Domain", "Tcs.Common.Domain\Tcs.Common.Domain.csproj", "{4692559D-6BCD-4A90-8DEB-2A6CD4794A6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tcs.Common.Domain", "Tcs.Common.Domain\Tcs.Common.Domain.csproj", "{4692559D-6BCD-4A90-8DEB-2A6CD4794A6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tcs.Common.Infrastructure", "Tcs.Common.Infrastructure\Tcs.Common.Infrastructure.csproj", "{B9CD56D5-59B4-4E9B-9267-F12CCFC0901C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tcs.Common.Infrastructure", "Tcs.Common.Infrastructure\Tcs.Common.Infrastructure.csproj", "{B9CD56D5-59B4-4E9B-9267-F12CCFC0901C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tcs.Common.Models", "Tcs.Common.Models\Tcs.Common.Models.csproj", "{9CD0AE9E-A4E8-4B40-A0B7-A8C05C5F25A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tcs.Common.Models", "Tcs.Common.Models\Tcs.Common.Models.csproj", "{9CD0AE9E-A4E8-4B40-A0B7-A8C05C5F25A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicroServices", "MicroServices", "{9B426E47-6E50-4C44-9DFB-FB80F5688627}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{B8C4F24F-C013-4540-90DC-C1B3B895C6FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tcs.Identity.Api", "Tcs.Identity.Api\Tcs.Identity.Api.csproj", "{9096AF6B-2594-44AC-9396-92DDE9721193}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tcs.Identity.Api", "Tcs.Identity.Api\Tcs.Identity.Api.csproj", "{9096AF6B-2594-44AC-9396-92DDE9721193}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tcs.Identity.Data", "Tcs.Identity.Data\Tcs.Identity.Data.csproj", "{7AC0D61C-04E2-4D25-A5A2-046722C7A620}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tcs.Identity.Application", "Tcs.Identity.Application\Tcs.Identity.Application.csproj", "{70ECE9F5-B1D7-4246-8533-0137B06FF710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tcs.Identity.Domain", "Tcs.Identity.Domain\Tcs.Identity.Domain.csproj", "{B7D5D951-EC56-46DF-9167-5189264923FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{9096AF6B-2594-44AC-9396-92DDE9721193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9096AF6B-2594-44AC-9396-92DDE9721193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9096AF6B-2594-44AC-9396-92DDE9721193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC0D61C-04E2-4D25-A5A2-046722C7A620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC0D61C-04E2-4D25-A5A2-046722C7A620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC0D61C-04E2-4D25-A5A2-046722C7A620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC0D61C-04E2-4D25-A5A2-046722C7A620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70ECE9F5-B1D7-4246-8533-0137B06FF710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70ECE9F5-B1D7-4246-8533-0137B06FF710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70ECE9F5-B1D7-4246-8533-0137B06FF710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70ECE9F5-B1D7-4246-8533-0137B06FF710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7D5D951-EC56-46DF-9167-5189264923FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D5D951-EC56-46DF-9167-5189264923FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D5D951-EC56-46DF-9167-5189264923FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D5D951-EC56-46DF-9167-5189264923FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +67,9 @@ Global
 		{9CD0AE9E-A4E8-4B40-A0B7-A8C05C5F25A3} = {FB505D35-160C-48FD-91EE-08B76CC19053}
 		{B8C4F24F-C013-4540-90DC-C1B3B895C6FD} = {9B426E47-6E50-4C44-9DFB-FB80F5688627}
 		{9096AF6B-2594-44AC-9396-92DDE9721193} = {B8C4F24F-C013-4540-90DC-C1B3B895C6FD}
+		{7AC0D61C-04E2-4D25-A5A2-046722C7A620} = {B8C4F24F-C013-4540-90DC-C1B3B895C6FD}
+		{70ECE9F5-B1D7-4246-8533-0137B06FF710} = {B8C4F24F-C013-4540-90DC-C1B3B895C6FD}
+		{B7D5D951-EC56-46DF-9167-5189264923FE} = {B8C4F24F-C013-4540-90DC-C1B3B895C6FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05647E62-DC21-4753-A686-73652E8C59C1}

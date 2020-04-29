@@ -18,11 +18,11 @@ namespace Tcs.Common.Infrastructure.MongoDb
                      "Database settings must be defined.");
 
             if (string.IsNullOrEmpty(settings.ServerConnection))
-                throw new TcsException("empty_settings_ServerConnection",
+                throw new TcsException("empty_settings_serverConnection",
                      "ServerConnection can not be empty.");
 
             if (string.IsNullOrEmpty(settings.Database))
-                throw new TcsException("empty_settings_Database",
+                throw new TcsException("empty_settings_database",
                      "Database name must be defined.");
 
             var client = new MongoClient(settings.ServerConnection);

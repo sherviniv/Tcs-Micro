@@ -29,9 +29,9 @@ namespace Tcs.Common.Infrastructure.Bus
             _eventTypes = new List<Type>();
         }
 
-        public Task SendCommand<T>(T command) where T : Command
+        public Task<bool> SendCommand<T>(T command) where T : Command
         {
-            return _mediator.Send(command);
+            return  _mediator.Send(command);
         }
 
         public void Publish<T>(T @event) where T : Event

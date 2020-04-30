@@ -9,7 +9,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Folder Include="CommandsHandlers\" />
+    <Folder Include="Events\" />
+    <Folder Include="EventsHandlers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tcs.Common.Domain\Tcs.Common.Domain.csproj" />
   </ItemGroup>
 
 </Project>

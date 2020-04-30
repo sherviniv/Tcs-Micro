@@ -4,5 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tcs.Identity.Domain\Tcs.Identity.Domain.csproj" />
+  </ItemGroup>
+
 
 </Project>

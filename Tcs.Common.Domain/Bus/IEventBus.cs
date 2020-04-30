@@ -9,7 +9,7 @@ namespace Tcs.Common.Domain.Bus
 {
     public interface IEventBus
     {
-        Task SendCommand<T>(T command) where T : Command;
+        Task<bool> SendCommand<T>(T command) where T : Command;
 
         void Publish<T>(T @event) where T : Event;
 

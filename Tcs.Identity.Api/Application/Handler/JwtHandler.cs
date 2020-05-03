@@ -8,7 +8,7 @@ using System.Text;
 using Tcs.Common.Domain.Models;
 using Tcs.Identity.Domain.Models;
 
-namespace Tcs.Identity.Application.Handler
+namespace Tcs.Identity.Api.Handler
 {
     public class JwtHandler
     {

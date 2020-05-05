@@ -5,7 +5,7 @@ namespace Tcs.Identity.Domain.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        protected ApplicationUser() 
+        public ApplicationUser() 
         {
         }
 

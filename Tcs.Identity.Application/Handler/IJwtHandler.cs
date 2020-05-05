@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Tcs.Identity.Domain.Models;
 
-namespace Tcs.Identity.Api.Handler
+namespace Tcs.Identity.Application.Handler
 {
-    interface IJwtHandler
+    public interface IJwtHandler
     {
         string Generate(ApplicationUser user);
     }

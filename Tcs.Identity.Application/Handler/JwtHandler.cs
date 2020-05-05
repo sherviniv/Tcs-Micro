@@ -8,9 +8,9 @@ using System.Text;
 using Tcs.Common.Domain.Models;
 using Tcs.Identity.Domain.Models;
 
-namespace Tcs.Identity.Api.Handler
+namespace Tcs.Identity.Application.Handler
 {
-    public class JwtHandler
+    public class JwtHandler : IJwtHandler
     {
         private readonly MicroSettings _appSettings;
 

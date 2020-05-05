@@ -9,12 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CommandsHandlers\" />
-    <Folder Include="Events\" />
-    <Folder Include="EventsHandlers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Tcs.Common.Domain\Tcs.Common.Domain.csproj" />
   </ItemGroup>
 

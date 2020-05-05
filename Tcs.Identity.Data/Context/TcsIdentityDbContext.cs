@@ -7,9 +7,9 @@ using Tcs.Identity.Domain.Models;
 
 namespace Tcs.Identity.Data.Context
 {
-    class TIdentityDbContext : IdentityDbContext<ApplicationUser, Role, string, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
+    class TcsIdentityDbContext : IdentityDbContext<ApplicationUser, Role, string, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
     {
-        public TIdentityDbContext(DbContextOptions<TIdentityDbContext> options) : base(options) 
+        public TcsIdentityDbContext(DbContextOptions<TcsIdentityDbContext> options) : base(options) 
         { 
         }
 

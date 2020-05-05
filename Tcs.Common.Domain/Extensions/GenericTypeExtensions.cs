@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,6 +28,11 @@ namespace Tcs.Common.Domain.Extensions
         public static string GetGenericTypeName(this object @object)
         {
             return @object.GetType().GetGenericTypeName();
+        }
+
+        public static string GetObjectAsJson(this object @object) 
+        {
+            return JsonConvert.SerializeObject(@object);
         }
     }
 }

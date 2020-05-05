@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Tcs.Identity.Application\Tcs.Identity.Application.csproj" />
     <ProjectReference Include="..\Tcs.Identity.Domain\Tcs.Identity.Domain.csproj" />
   </ItemGroup>
 

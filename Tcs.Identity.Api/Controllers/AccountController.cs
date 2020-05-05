@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Tcs.Common.Domain.Bus;
+using Tcs.Common.Domain.Exceptions;
 using Tcs.Common.Domain.Extensions;
-using Tcs.Identity.Domain.Commands;
+using Tcs.Identity.Application.Interfaces;
+using Tcs.Identity.Application.Models;
 
 namespace Tcs.Identity.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class AccountController : ControllerBase
     {
         private readonly ILogger<AccountController> _logger;
+        private readonly IAccountService _accountService;
         private readonly IEventBus _bus;
 
         public AccountController(
@@ -29,21 +32,30 @@ namespace Tcs.Identity.Api.Controllers
         [HttpPut]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> RegisterUserAsync([FromBody]CreateUser command)
+        public async Task<IActionResult> RegisterUserAsync([FromBody]CreateUser model)
         {
-            _logger.LogInformation(
-                                "----- Sending command: {CommandName} : Data ({})",
-                                command.GetGenericTypeName(),
-                                command);
-                            
-            var commandResult = await _bus.SendCommand(command);
-
-            if (!commandResult)
+            if (ModelState.IsValid)
             {
-                return BadRequest();
+                _logger.LogInformation(
+                    "----- recieving request Createuser : {model} : Data ({data})",
+                    model.GetGenericTypeName(),
+                    model.GetObjectAsJson());
+
+                var commandResult = await _accountService.RegisterAsync(model);
+
+                if (!commandResult)
+                {
+                    return BadRequest();
+                }
+
+                return Ok();
+            }
+            else
+            {
+                throw new TcsException("invalid_data",
+                      ModelState.Values.SelectMany(v => v.Errors));
             }
 
-            return Ok();
         }
 
     }

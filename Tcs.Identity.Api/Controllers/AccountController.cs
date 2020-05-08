@@ -34,7 +34,7 @@ namespace Tcs.Identity.Api.Controllers
         [HttpPut]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> RegisterUserAsync([FromBody]CreateUser model)
+        public async Task<IActionResult> RegisterUser([FromBody]CreateUser model)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +58,14 @@ namespace Tcs.Identity.Api.Controllers
                       ModelState.Values.SelectMany(v => v.Errors));
             }
 
+        }
+
+        [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> Login([FromBody]AuthenticateUser model)
+        {
+            throw new NotImplementedException();
         }
 
     }

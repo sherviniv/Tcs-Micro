@@ -9,6 +9,7 @@ namespace Tcs.Identity.Application.Interfaces
     public interface IAccountService
     {
         Task<bool> RegisterAsync(CreateUser model);
+        Task<string> LoginAsync(AuthenticateUser model);
 
     }
 }

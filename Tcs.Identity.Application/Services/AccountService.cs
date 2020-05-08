@@ -35,7 +35,7 @@ namespace Tcs.Identity.Application.Services
         {
             var user = new ApplicationUser
             {
-                UserName = model.Email,
+                UserName = model.UserName,
                 Email = model.Email,
             };
 
@@ -48,10 +48,9 @@ namespace Tcs.Identity.Application.Services
             return true;
         }
 
-        //public async Task<string> LoginAsync(AuthenticateUser model)
-        //{
-
-
-        //}
+        public async Task<string> LoginAsync(AuthenticateUser model)
+        {
+                throw new NotImplementedException();
+        }
     }
 }

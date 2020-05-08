@@ -23,9 +23,11 @@ namespace Tcs.Identity.Api.Controllers
 
         public AccountController(
             IEventBus bus,
+            IAccountService accountService,
             ILogger<AccountController> logger)
         {
             _bus = bus;
+            _accountService = accountService;
             _logger = logger;
         }
 

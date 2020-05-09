@@ -12,7 +12,9 @@ using Tcs.Identity.Application.Handler;
 using Tcs.Identity.Application.Interfaces;
 using Tcs.Identity.Application.Services;
 using Tcs.Identity.Data.Context;
+using Tcs.Identity.Data.Repository;
 using Tcs.Identity.Domain.Models;
+using Tcs.Identity.Domain.Repository;
 
 namespace Tcs.Common.Ioc.ServicesDC
 {
@@ -46,6 +48,7 @@ namespace Tcs.Common.Ioc.ServicesDC
 
             services.AddScoped<IJwtHandler, JwtHandler>();
             services.AddScoped<IAccountService,AccountService>();
+            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
 
         }
     }

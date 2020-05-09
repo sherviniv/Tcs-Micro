@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tcs.Common.Domain.Exceptions;
 using Tcs.Identity.Application.Handler;
 using Tcs.Identity.Application.Interfaces;
 using Tcs.Identity.Application.Models;
 using Tcs.Identity.Domain.Models;
+using Tcs.Identity.Domain.Repository;
 
 namespace Tcs.Identity.Application.Services
 {
@@ -16,6 +18,7 @@ namespace Tcs.Identity.Application.Services
     {
         private readonly ILogger _logger;
         private readonly IJwtHandler _jwtHandler;
+        private readonly IApplicationUserRepository _applicationUserRepository;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
@@ -23,12 +26,14 @@ namespace Tcs.Identity.Application.Services
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IJwtHandler jwtHandler,
+            IApplicationUserRepository applicationUserRepository,
              ILogger<AccountService> logger)
         {
             _logger = logger;
             _jwtHandler = jwtHandler;
             _userManager = userManager;
             _signInManager = signInManager;
+            _applicationUserRepository = applicationUserRepository;
         }
 
         public async Task<bool> RegisterAsync(CreateUser model)
@@ -50,7 +55,20 @@ namespace Tcs.Identity.Application.Services
 
         public async Task<string> LoginAsync(AuthenticateUser model)
         {
-                throw new NotImplementedException();
+            var user = await _applicationUserRepository.GetAsync(model.UserName);
+
+            if (user == null)
+                throw new TcsException("invalid_credentials",
+                        "User cannot be find.");
+
+            var result = await _signInManager.CheckPasswordSignInAsync(user 
+                  , model.Password, true);
+
+            if(!result.Succeeded)
+                throw new TcsException("invalid_credentials",
+                    "invalid_credentials.");
+
+            return _jwtHandler.Generate(user);
         }
     }
 }

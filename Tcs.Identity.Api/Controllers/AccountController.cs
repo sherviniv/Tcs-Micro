@@ -60,12 +60,19 @@ namespace Tcs.Identity.Api.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Login([FromBody]AuthenticateUser model)
         {
-            throw new NotImplementedException();
+                _logger.LogInformation(
+                    "----- recieving request Login  : {model} : Data ({data})",
+                    model.GetGenericTypeName(),
+                    model.GetObjectAsJson());
+
+                var jwttoken = await _accountService.LoginAsync(model);
+
+                return Ok(jwttoken);
         }
 
     }

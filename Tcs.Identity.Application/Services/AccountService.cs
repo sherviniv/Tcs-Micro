@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tcs.Common.Domain.Exceptions;
+using Tcs.Common.Models.Identity;
 using Tcs.Identity.Application.Handler;
 using Tcs.Identity.Application.Interfaces;
-using Tcs.Identity.Application.Models;
 using Tcs.Identity.Domain.Models;
 using Tcs.Identity.Domain.Repository;
 
@@ -61,14 +61,21 @@ namespace Tcs.Identity.Application.Services
                 throw new TcsException("invalid_credentials",
                         "User cannot be find.");
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user 
+            var result = await _signInManager.CheckPasswordSignInAsync(user
                   , model.Password, true);
 
-            if(!result.Succeeded)
+            if (!result.Succeeded)
                 throw new TcsException("invalid_credentials",
                     "invalid_credentials.");
 
             return _jwtHandler.Generate(user);
+        }
+
+        public async Task<IEnumerable<UserViewModel>> GetUsersAsync()
+        {
+            var usersList = await _applicationUserRepository.GetAsync();
+
+            return usersList.Select(c => new UserViewModel(c.Id, c.FirstName, c.LastName, c.Email));
         }
     }
 }

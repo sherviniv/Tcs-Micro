@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Tcs.Identity.Application.Models;
+using Tcs.Common.Models.Identity;
 
 namespace Tcs.Identity.Application.Interfaces
 {
@@ -10,6 +10,6 @@ namespace Tcs.Identity.Application.Interfaces
     {
         Task<bool> RegisterAsync(CreateUser model);
         Task<string> LoginAsync(AuthenticateUser model);
-
+        Task<IEnumerable<UserViewModel>> GetUsersAsync();
     }
 }

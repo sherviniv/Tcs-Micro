@@ -27,5 +27,10 @@ namespace Tcs.Identity.Data.Repository
         {
             return await _context.Users.FirstOrDefaultAsync(c => c.Email == usernameOremail || c.UserName == usernameOremail);
         }
+
+        public async Task<IEnumerable<ApplicationUser>> GetAsync()
+        {
+            return await _context.Users.ToListAsync();
+        }
     }
 }

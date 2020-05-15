@@ -10,5 +10,6 @@ namespace Tcs.Identity.Domain.Repository
     {
         Task<ApplicationUser> GetAsync(Guid id);
         Task<ApplicationUser> GetAsync(string usernameOremail);
+        Task<IEnumerable<ApplicationUser>> GetAsync();
     }
 }

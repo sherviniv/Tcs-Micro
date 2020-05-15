@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Tcs.Identity.Application.Models
+namespace Tcs.Common.Models.Identity
 {
     public class AuthenticateUser
     {

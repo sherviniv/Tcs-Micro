@@ -8,8 +8,8 @@ using Microsoft.Extensions.Logging;
 using Tcs.Common.Domain.Bus;
 using Tcs.Common.Domain.Exceptions;
 using Tcs.Common.Domain.Extensions;
+using Tcs.Common.Models.Identity;
 using Tcs.Identity.Application.Interfaces;
-using Tcs.Identity.Application.Models;
 
 namespace Tcs.Identity.Api.Controllers
 {
@@ -32,6 +32,7 @@ namespace Tcs.Identity.Api.Controllers
         }
 
         [HttpPut]
+        [Route("Register")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> RegisterUser([FromBody]CreateUser model)
@@ -61,8 +62,8 @@ namespace Tcs.Identity.Api.Controllers
         }
 
         [HttpPost]
+        [Route("Login")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Login([FromBody]AuthenticateUser model)
         {
                 _logger.LogInformation(
@@ -73,6 +74,18 @@ namespace Tcs.Identity.Api.Controllers
                 var jwttoken = await _accountService.LoginAsync(model);
 
                 return Ok(jwttoken);
+        }
+
+        [HttpPost]
+        [Route("GetUsers")]
+        public async Task<IActionResult> GetUsers()
+        {
+            _logger.LogInformation(
+                "----- recieving request GetUsers  : {model} : Data ({data})");
+
+            var users = await _accountService.GetUsersAsync();
+
+            return Ok(users);
         }
 
     }

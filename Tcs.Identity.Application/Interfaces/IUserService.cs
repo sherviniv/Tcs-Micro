@@ -6,7 +6,7 @@ using Tcs.Common.Models.Identity;
 
 namespace Tcs.Identity.Application.Interfaces
 {
-    public interface IAccountService
+    public interface IUserService
     {
         Task<bool> RegisterAsync(CreateUser model);
         Task<string> LoginAsync(AuthenticateUser model);

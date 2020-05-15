@@ -47,7 +47,7 @@ namespace Tcs.Common.Ioc.ServicesDC
             services.AddScoped<SignInManager<ApplicationUser>>();
 
             services.AddScoped<IJwtHandler, JwtHandler>();
-            services.AddScoped<IAccountService,AccountService>();
+            services.AddScoped<IUserService,UserService>();
             services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
 
         }

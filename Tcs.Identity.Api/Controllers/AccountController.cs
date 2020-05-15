@@ -18,12 +18,12 @@ namespace Tcs.Identity.Api.Controllers
     public class AccountController : ControllerBase
     {
         private readonly ILogger<AccountController> _logger;
-        private readonly IAccountService _accountService;
+        private readonly IUserService _accountService;
         private readonly IEventBus _bus;
 
         public AccountController(
             IEventBus bus,
-            IAccountService accountService,
+            IUserService accountService,
             ILogger<AccountController> logger)
         {
             _bus = bus;

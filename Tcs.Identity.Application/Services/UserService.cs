@@ -14,7 +14,7 @@ using Tcs.Identity.Domain.Repository;
 
 namespace Tcs.Identity.Application.Services
 {
-    public class AccountService : IAccountService
+    public class UserService : IUserService
     {
         private readonly ILogger _logger;
         private readonly IJwtHandler _jwtHandler;
@@ -22,12 +22,12 @@ namespace Tcs.Identity.Application.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountService(
+        public UserService(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IJwtHandler jwtHandler,
             IApplicationUserRepository applicationUserRepository,
-             ILogger<AccountService> logger)
+             ILogger<UserService> logger)
         {
             _logger = logger;
             _jwtHandler = jwtHandler;

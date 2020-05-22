@@ -75,7 +75,42 @@ namespace Tcs.Identity.Application.Services
         {
             var usersList = await _applicationUserRepository.GetAsync();
 
-            return usersList.Select(c => new UserViewModel(c.Id, c.FirstName, c.LastName, c.Email));
+            return usersList.Select(c => MapToUserViewModel(c));
+        }
+
+        public async Task<bool> UpdateUserAccountAsync(string userId, string newAccountId)
+        {
+            var user = await _applicationUserRepository.GetAsync(userId);
+
+            if (user == null)
+                throw new TcsException("invalid_userid",
+                        "User cannot be find.");
+
+            user.AccountId = newAccountId;
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Errors.Count() > 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public async Task<UserViewModel> GetUserAsync(string email)
+        {
+            var user = await _applicationUserRepository.GetAsync(email);
+
+            if (user == null)
+                throw new TcsException("invalid_email",
+                            "User cannot be find.");
+
+            return MapToUserViewModel(user);
+        }
+
+        private UserViewModel MapToUserViewModel(ApplicationUser user)
+        {
+            return new UserViewModel(user.Id, user.FirstName, user.LastName, user.Email);
         }
     }
 }

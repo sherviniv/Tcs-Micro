@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tcs.Identity.Data.Context;
 
 namespace Tcs.Identity.Data.Migrations
 {
     [DbContext(typeof(TcsIdentityDbContext))]
-    partial class TcsIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200522122644_add useraccountid to applicationuser")]
+    partial class adduseraccountidtoapplicationuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

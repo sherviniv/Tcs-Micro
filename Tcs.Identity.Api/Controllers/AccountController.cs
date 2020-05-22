@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Tcs.Common.Domain.Bus;
 using Tcs.Common.Domain.Exceptions;
 using Tcs.Common.Domain.Extensions;
+using Tcs.Common.Models.Account.Commands;
 using Tcs.Common.Models.Identity;
 using Tcs.Identity.Application.Interfaces;
 
@@ -50,6 +51,17 @@ namespace Tcs.Identity.Api.Controllers
                 {
                     return BadRequest();
                 }
+
+                var user = await _accountService.GetUserAsync(model.Email);
+
+                var command = new CreateAccountCommand(user.Id);
+
+                _logger.LogInformation(
+                  "----- Sending command: {CommandName} : ({@Command})",
+                    model.GetGenericTypeName(),
+                    model.GetObjectAsJson());
+
+                await _bus.SendCommand(command);
 
                 return Ok();
             }

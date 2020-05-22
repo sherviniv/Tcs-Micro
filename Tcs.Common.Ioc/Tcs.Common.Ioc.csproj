@@ -9,6 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Tcs.Account.Application\Tcs.Account.Application.csproj" />
+    <ProjectReference Include="..\Tcs.Account.Data\Tcs.Account.Data.csproj" />
+    <ProjectReference Include="..\Tcs.Account.Domain\Tcs.Account.Domain.csproj" />
     <ProjectReference Include="..\Tcs.Common.Domain\Tcs.Common.Domain.csproj" />
     <ProjectReference Include="..\Tcs.Common.Infrastructure\Tcs.Common.Infrastructure.csproj" />
     <ProjectReference Include="..\Tcs.Identity.Application\Tcs.Identity.Application.csproj" />

@@ -9,7 +9,9 @@ namespace Tcs.Identity.Application.Interfaces
     public interface IUserService
     {
         Task<bool> RegisterAsync(CreateUser model);
+        Task<UserViewModel> GetUserAsync(string email);
         Task<string> LoginAsync(AuthenticateUser model);
         Task<IEnumerable<UserViewModel>> GetUsersAsync();
+        Task<bool> UpdateUserAccountAsync(string userId, string newAccountId);
     }
 }

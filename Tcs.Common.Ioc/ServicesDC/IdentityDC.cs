@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -7,7 +8,10 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Tcs.Common.Domain.Bus;
 using Tcs.Common.Domain.Models;
+using Tcs.Common.Models.Account.Events;
+using Tcs.Identity.Application.EventHandlers;
 using Tcs.Identity.Application.Handler;
 using Tcs.Identity.Application.Interfaces;
 using Tcs.Identity.Application.Services;
@@ -43,12 +47,18 @@ namespace Tcs.Common.Ioc.ServicesDC
                 .AddEntityFrameworkStores<TcsIdentityDbContext>()
                    .AddDefaultTokenProviders();
 
+            //Repositories
+            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
+
+            //Services
             services.AddScoped<UserManager<ApplicationUser>>();
             services.AddScoped<SignInManager<ApplicationUser>>();
 
             services.AddScoped<IJwtHandler, JwtHandler>();
             services.AddScoped<IUserService,UserService>();
-            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
+
+            //Domain Events
+            services.AddTransient<IEventHandler<AccountCreatedEvent>, AccountCreatedEventHandler>();
 
         }
     }

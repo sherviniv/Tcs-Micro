@@ -15,6 +15,9 @@ using Tcs.Common.IoC;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
 using MediatR;
+using Tcs.Common.Domain.Bus;
+using Tcs.Identity.Application.EventHandlers;
+using Tcs.Common.Models.Account.Events;
 
 namespace Tcs.Identity.Api
 {
@@ -67,6 +70,14 @@ namespace Tcs.Identity.Api
             {
                 endpoints.MapControllers();
             });
+
+            ConfigureEventBus(app);
+        }
+
+        private void ConfigureEventBus(IApplicationBuilder app)
+        {
+            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+            eventBus.Subscribe<AccountCreatedEvent, AccountCreatedEventHandler>();
         }
     }
 }

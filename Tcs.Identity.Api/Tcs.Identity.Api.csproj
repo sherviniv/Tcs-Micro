@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Tcs.Common.Ioc\Tcs.Common.Ioc.csproj" />
     <ProjectReference Include="..\Tcs.Common.Models\Tcs.Common.Models.csproj" />
     <ProjectReference Include="..\Tcs.Identity.Application\Tcs.Identity.Application.csproj" />
+    <ProjectReference Include="..\Tcs.Identity.Data\Tcs.Identity.Data.csproj" />
     <ProjectReference Include="..\Tcs.Identity.Domain\Tcs.Identity.Domain.csproj" />
   </ItemGroup>
 

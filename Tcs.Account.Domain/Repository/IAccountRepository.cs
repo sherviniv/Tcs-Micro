@@ -9,5 +9,7 @@ namespace Tcs.Account.Domain.Repository
     public interface IAccountRepository
     {
         Task CreateAsync(UserAccount userAccount);
+        Task<UserAccount> GetAsync(Guid id);
+        Task<UserAccount> GetAsync(string userId);
     }
 }

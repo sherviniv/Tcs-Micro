@@ -48,6 +48,9 @@ namespace Tcs.Common.Ioc.ServicesDC
                 .AddEntityFrameworkStores<TcsIdentityDbContext>()
                    .AddDefaultTokenProviders();
 
+            //Subscriptions
+            services.AddTransient<AccountCreatedEventHandler>();
+
             //Repositories
             services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
 

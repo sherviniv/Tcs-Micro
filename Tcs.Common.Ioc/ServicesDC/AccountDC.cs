@@ -4,12 +4,15 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Tcs.Account.Application.EventHandlers;
 using Tcs.Account.Application.Interfaces;
 using Tcs.Account.Application.Services;
 using Tcs.Account.Data.Repository;
 using Tcs.Account.Domain.Repository;
+using Tcs.Common.Domain.Bus;
 using Tcs.Common.Infrastructure.MongoDb;
 using Tcs.Common.Models.Account.Commands;
+using Tcs.Common.Models.Identity.Events;
 
 namespace Tcs.Common.Ioc.ServicesDC
 {
@@ -25,6 +28,9 @@ namespace Tcs.Common.Ioc.ServicesDC
                 Database = Configuration["ConnectionStrings:MongoDb:DatabaseName"]
             });
 
+            //Subscriptions
+            services.AddTransient<UserCreatedEventHandler>();
+
             //Repositories
             services.AddScoped<IAccountRepository, AccountRepository>();
 
@@ -34,6 +40,8 @@ namespace Tcs.Common.Ioc.ServicesDC
             //Domain Commands
             services.AddTransient<IRequestHandler<CreateAccountCommand, bool>, CreateAccountCommandHandler>();
 
+            //Domain Events
+            services.AddTransient<IEventHandler<UserCreatedEvent>, UserCreatedEventHandler>();
         }
 
     }

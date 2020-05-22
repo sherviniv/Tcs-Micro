@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <Folder Include="Account\ViewModels\" />
-    <Folder Include="Identity\Events\" />
   </ItemGroup>
 
 </Project>

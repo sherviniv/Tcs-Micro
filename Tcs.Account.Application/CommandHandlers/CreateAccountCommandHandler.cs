@@ -16,8 +16,8 @@ namespace Tcs.Common.Models.Account.Commands
         private IAccountService _accountService { get; }
 
         public CreateAccountCommandHandler(
-            IAccountService accountService
-            , IEventBus bus)
+            IAccountService accountService, 
+            IEventBus bus)
         {
             _accountService = accountService;
             _bus = bus;

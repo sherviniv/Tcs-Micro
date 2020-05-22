@@ -13,6 +13,9 @@ using Microsoft.Extensions.Logging;
 using Tcs.Common.Ioc.ServicesDC;
 using Tcs.Common.IoC;
 using MediatR;
+using Tcs.Account.Application.EventHandlers;
+using Tcs.Common.Models.Identity.Events;
+using Tcs.Common.Domain.Bus;
 
 namespace Tcs.Account.Api
 {
@@ -54,6 +57,15 @@ namespace Tcs.Account.Api
             {
                 endpoints.MapControllers();
             });
+
+            ConfigureEventBus(app);
         }
+
+        private void ConfigureEventBus(IApplicationBuilder app)
+        {
+            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+            eventBus.Subscribe<UserCreatedEvent, UserCreatedEventHandler>();
+        }
+
     }
 }

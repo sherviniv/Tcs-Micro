@@ -103,7 +103,7 @@ namespace Tcs.Common.Infrastructure.Bus
             {
                 await ProcessEvent(eventName, message).ConfigureAwait(false);
             }
-            catch 
+            catch (Exception ex)
             {
             }
         }

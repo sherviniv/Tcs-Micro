@@ -80,7 +80,7 @@ namespace Tcs.Identity.Application.Services
 
         public async Task<bool> UpdateUserAccountAsync(string userId, string newAccountId)
         {
-            var user = await _applicationUserRepository.GetAsync(userId);
+            var user = await _applicationUserRepository.GetAsync(Guid.Parse(userId));
 
             if (user == null)
                 throw new TcsException("invalid_userid",

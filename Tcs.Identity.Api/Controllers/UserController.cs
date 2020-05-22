@@ -10,22 +10,23 @@ using Tcs.Common.Domain.Exceptions;
 using Tcs.Common.Domain.Extensions;
 using Tcs.Common.Models.Account.Commands;
 using Tcs.Common.Models.Identity;
+using Tcs.Common.Models.Identity.Events;
 using Tcs.Identity.Application.Interfaces;
 
 namespace Tcs.Identity.Api.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class AccountController : ControllerBase
+    public class UserController : ControllerBase
     {
-        private readonly ILogger<AccountController> _logger;
+        private readonly ILogger<UserController> _logger;
         private readonly IUserService _accountService;
         private readonly IEventBus _bus;
 
-        public AccountController(
+        public UserController(
             IEventBus bus,
             IUserService accountService,
-            ILogger<AccountController> logger)
+            ILogger<UserController> logger)
         {
             _bus = bus;
             _accountService = accountService;
@@ -54,14 +55,7 @@ namespace Tcs.Identity.Api.Controllers
 
                 var user = await _accountService.GetUserAsync(model.Email);
 
-                var command = new CreateAccountCommand(user.Id);
-
-                _logger.LogInformation(
-                  "----- Sending command: {CommandName} : ({@Command})",
-                    model.GetGenericTypeName(),
-                    model.GetObjectAsJson());
-
-                await _bus.SendCommand(command);
+                _bus.Publish(new UserCreatedEvent(user.Id));
 
                 return Ok();
             }

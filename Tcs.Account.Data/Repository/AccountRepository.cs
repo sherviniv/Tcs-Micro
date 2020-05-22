@@ -4,16 +4,14 @@ using System;
 using System.Threading.Tasks;
 using Tcs.Account.Domain.Models;
 using Tcs.Account.Domain.Repository;
+using Tcs.Common.Infrastructure.MongoDb;
 
 namespace Tcs.Account.Data.Repository
 {
-    public class AccountRepository : IAccountRepository
+    public class AccountRepository : BaseRepository, IAccountRepository
     {
-        private readonly IMongoDatabase _database;
-
-        public AccountRepository(IMongoDatabase database)
+        public AccountRepository(MongoDbSettings settings) : base(settings)
         {
-            _database = database;
         }
 
         public async Task<UserAccount> GetAsync(Guid id) 

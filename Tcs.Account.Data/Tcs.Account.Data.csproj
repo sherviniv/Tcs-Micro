@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Tcs.Account.Domain\Tcs.Account.Domain.csproj" />
+    <ProjectReference Include="..\Tcs.Common.Infrastructure\Tcs.Common.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

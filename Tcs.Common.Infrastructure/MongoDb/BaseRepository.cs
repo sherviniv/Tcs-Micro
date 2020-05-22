@@ -9,7 +9,7 @@ namespace Tcs.Common.Infrastructure.MongoDb
 {
     public class BaseRepository
     {
-        protected readonly IMongoDatabase MongoDatabase;
+        protected readonly IMongoDatabase _database;
 
         protected BaseRepository(MongoDbSettings settings)
         {
@@ -27,7 +27,7 @@ namespace Tcs.Common.Infrastructure.MongoDb
 
             var client = new MongoClient(settings.ServerConnection);
 
-            MongoDatabase = client.GetDatabase(settings.Database,
+            _database = client.GetDatabase(settings.Database,
                 new MongoDatabaseSettings
                 {
                     GuidRepresentation = GuidRepresentation.Standard

@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Tcs.Common.Ioc.ServicesDC;
+using Tcs.Common.IoC;
+using MediatR;
 
 namespace Tcs.Account.Api
 {
@@ -26,6 +29,11 @@ namespace Tcs.Account.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddMediatR(typeof(Startup));
+
+            DependencyContainer.RegisterBaseServices(services, Configuration);
+            AccountDC.RegisterServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

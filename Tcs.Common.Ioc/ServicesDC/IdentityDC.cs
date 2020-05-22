@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Text;
 using Tcs.Common.Domain.Bus;
 using Tcs.Common.Domain.Models;
+using Tcs.Common.Models.Account.Commands;
 using Tcs.Common.Models.Account.Events;
 using Tcs.Identity.Application.EventHandlers;
 using Tcs.Identity.Application.Handler;
